@@ -101,7 +101,11 @@ int main() {
 
 			Queue_Enqueue(queue, cart);
 		} else if (command == "DELIVERY") {
-
+						Cart cart = Queue_Front(queue);
+			cout << "Delivered order: " << cart.products[0].productID << " " << cart.products[0].productName << " " 
+					<< cart.quantities[0] <<endl;
+			
+			Queue_Dequeue(queue);
 		} else {
 			cout << "Unrecognized command, please try again" << endl;
 		}
