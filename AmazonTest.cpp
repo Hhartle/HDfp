@@ -81,6 +81,7 @@ int main() {
 	string command;
 	while(exit != 1) {
 		cout<<"Please enter a command!" << endl;
+		cout<<"Commands: EXIT, ORDER, DELIVERY" << endl;
 		cin >> command;
 
 		if (command == "EXIT") {
