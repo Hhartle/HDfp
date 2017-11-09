@@ -47,7 +47,7 @@ Cart Queue_Front(Queue q){
 	}
 }
 
-void Queue_Deque(Queue q){
+void Queue_Dequeue(Queue q){
 	if(q.size == 0){
 		cout << "Error: No additional orders to deliver" << endl;
 	} else {
