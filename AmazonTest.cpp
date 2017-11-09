@@ -17,6 +17,7 @@ Menu
 #include <iostream>
 #include <string>
 using namespace std;
+const int QUEUE_MAX=50;
 
 struct Product {
 	int productID;
@@ -32,17 +33,17 @@ struct Queue {
 	int size;
 	int front;
 	int rear;
-	int QUEUE_MAX=50;
 	Cart data[QUEUE_MAX];
 };
 
 Cart Queue_Front(Queue q){
 	if(q.size == 0) {
 		cout << "There are no current orders" << endl;
-		return 0;
-		// Have to deal with outside of method call
+		// return empty cart
+		Cart cart;
+		return cart;
 	} else {
-		return q.data[0]; 
+		return q.data[0];
 	}
 }
 
@@ -52,18 +53,18 @@ void Queue_Deque(Queue q){
 	} else {
 		q.size--;
 		q.front++;
-		if(q.front==q.QUEUE_MAX){
+		if(q.front==QUEUE_MAX){
 			q.front=0;
 		}
 	}
 }
 
 void Queue_Enqueue(Queue q, Cart c){
-	if(q.size < q.QUEUE_MAX){
+	if(q.size < QUEUE_MAX){
 		q.size++;
 		q.rear++;
-		
-		if(q.rear == q.QUEUE_MAX){
+
+		if(q.rear == QUEUE_MAX){
 			q.rear = 0;
 		}
 		q.data[q.rear] = c;
@@ -72,13 +73,13 @@ void Queue_Enqueue(Queue q, Cart c){
 	}
 }
 
+
 int main() {	
-	Queue queue = new Queue;
-	
+	Queue queue;
+
 	int exit = 0;
 	string command;
 	while(exit != 1) {
-		cout<<"Commands: EXIT, ORDER, DELIVERY" << endl;
 		cout<<"Please enter a command!" << endl;
 		cin >> command;
 
@@ -89,15 +90,15 @@ int main() {
 			int productID, quantity;
 			string productName;
 			cin >> productID >> productName >> quantity;
-			
-			Product product = new Product;
-			Cart cart = new Cart;
-			
+
+			Product product;
+			Cart cart;
+
 			product.productID = productID;
 			product.productName = productName;
 			cart.products[0] = product;
 			cart.quantities[0] = quantity;
-			
+
 			Queue_Enqueue(queue, cart);
 		} else if (command == "DELIVERY") {
 
