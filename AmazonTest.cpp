@@ -1,18 +1,10 @@
 //============================================================================
-// Name        : Amazon.cpp
+// Name        : AmazonTest.cpp
 // Author      : Hans Hartle and Dante Colucci
 // Version     :
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
 //============================================================================
-
-/*
-tbd=to be determined
-Display every loop:
-Menu
-~~~~~~~tbd
-~~~~~~tbd
-*/
 
 #include <iostream>
 #include <string>
@@ -30,9 +22,9 @@ struct Cart {
 };
 
 struct Queue {
-	int size;
-	int front;
-	int rear;
+	int size = 0;
+	int front = 0;
+	int rear = -1;
 	Cart data[QUEUE_MAX];
 };
 
@@ -47,7 +39,7 @@ Cart Queue_Front(Queue q){
 	}
 }
 
-void Queue_Dequeue(Queue q){
+void Queue_Dequeue(Queue& q){
 	if(q.size == 0){
 		cout << "Error: No additional orders to deliver" << endl;
 	} else {
@@ -59,7 +51,7 @@ void Queue_Dequeue(Queue q){
 	}
 }
 
-void Queue_Enqueue(Queue q, Cart c){
+void Queue_Enqueue(Queue& q, Cart c){
 	if(q.size < QUEUE_MAX){
 		q.size++;
 		q.rear++;
@@ -73,8 +65,7 @@ void Queue_Enqueue(Queue q, Cart c){
 	}
 }
 
-
-int main() {	
+int main() {
 	Queue queue;
 
 	int exit = 0;
@@ -102,10 +93,10 @@ int main() {
 
 			Queue_Enqueue(queue, cart);
 		} else if (command == "DELIVERY") {
-						Cart cart = Queue_Front(queue);
-			cout << "Delivered order: " << cart.products[0].productID << " " << cart.products[0].productName << " " 
+			Cart cart = Queue_Front(queue);
+			cout << "Delivered order: " << cart.products[0].productID << " " << cart.products[0].productName << " "
 					<< cart.quantities[0] <<endl;
-			
+
 			Queue_Dequeue(queue);
 		} else {
 			cout << "Unrecognized command, please try again" << endl;
