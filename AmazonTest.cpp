@@ -73,6 +73,8 @@ void Queue_Enqueue(Queue q, Cart c){
 }
 
 int main() {	
+	Queue queue = new Queue;
+	
 	int exit = 0;
 	string command;
 	while(exit != 1) {
@@ -82,7 +84,20 @@ int main() {
 		if (command == "EXIT") {
 			exit=1;
 		} else if (command == "ORDER") {
-
+						cout<<"Please enter your order" << endl;
+			int productID, quantity;
+			string productName;
+			cin >> productID >> productName >> quantity;
+			
+			Product product = new Product;
+			Cart cart = new Cart;
+			
+			product.productID = productID;
+			product.productName = productName;
+			cart.products[0] = product;
+			cart.quantities[0] = quantity;
+			
+			Queue_Enqueue(queue, cart);
 		} else if (command == "DELIVERY") {
 
 		} else {
