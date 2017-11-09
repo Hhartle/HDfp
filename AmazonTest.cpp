@@ -84,7 +84,7 @@ int main() {
 		if (command == "EXIT") {
 			exit=1;
 		} else if (command == "ORDER") {
-						cout<<"Please enter your order" << endl;
+			cout<<"Please enter your order" << endl;
 			int productID, quantity;
 			string productName;
 			cin >> productID >> productName >> quantity;
