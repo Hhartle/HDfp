@@ -79,6 +79,7 @@ int main() {
 			exit=1;
 		} else if (command == "ORDER") {
 			cout<<"Please enter your order" << endl;
+			cout<<"Example: '12 Bread 4' or '8 Bread_Roll 2' " << endl;
 			int productID, quantity;
 			string productName;
 			cin >> productID >> productName >> quantity;
