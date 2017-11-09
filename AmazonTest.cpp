@@ -6,6 +6,14 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
+/*
+tbd=to be determined
+Display every loop:
+Menu
+~~~~~~~tbd
+~~~~~~tbd
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;
